@@ -1,9 +1,23 @@
+import { useEffect, useState } from 'react'
 import Cards from './components/Cards'
-function App() {
+const { REACT_APP_API_KEY } = process.env
+
+const App = () => {
+  const [resData, setResData] = useState(null)
+
+  useEffect(() => {
+    fetch(
+      `https://everymundotechnical.herokuapp.com/popularRoutes/${REACT_APP_API_KEY}`
+    )
+      .then((res) => res.json())
+      .then((data) => setResData(data))
+  }, [])
+
   return (
     <div>
       <h1>Home Page</h1>
-      <Cards />
+
+      <Cards data={resData} />
     </div>
   )
 }
