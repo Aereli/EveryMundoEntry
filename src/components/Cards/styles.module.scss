@@ -1,0 +1,15 @@
+.container {
+  width: min-content;
+  padding: 1rem;
+}
+
+.priceContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  .price {
+    font-size: 3rem;
+    color: var(--yellow);
+  }
+}
