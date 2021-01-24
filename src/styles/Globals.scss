@@ -32,7 +32,7 @@ p {
 }
 
 button {
-  margin: 0.5rem 0;
+  margin: 0.5rem;
   color: var(--secondary);
   background: var(--primary);
   border: 1px dashed var(--secondary);
@@ -41,7 +41,12 @@ button {
   cursor: pointer;
   transition: all 0.2s;
   &:hover {
-    border: 2px solid var(--yellow);
+    border: 1px solid var(--yellow);
     color: var(--yellow);
+
+    h1,
+    h2 {
+      color: var(--yellow);
+    }
   }
 }

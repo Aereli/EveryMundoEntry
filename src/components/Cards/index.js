@@ -1,13 +1,43 @@
-import React from 'react'
+import React, { useState } from 'react'
+import Modal from '../Modal'
 import styles from './styles.module.scss'
+import useModal from '../Modal/useModal'
+import CustomModal from '../Modal'
 
 const Cards = ({ data }) => {
+  // console.log(data)
+  // const [toggle, setToggle] = useState(false)
+  const [currentFlight, setCurrentFlight] = useState(null)
+
+  const { toggle, modalOpen } = useModal
+
+  function sendModal(flight) {
+    toggle()
+    setCurrentFlight(flight)
+    return currentFlight
+  }
+
   return (
     <div className={styles.container}>
+      {/* {modalOpen && ( */}
+      {/* // <div className={styles.modal}>
+        //   <h1>this is the new modal</h1>
+        //   <form>
+        //     <input type="text">{flight.destination}</input>
+        //     <input type="text">{flight.origin}</input>
+        //     <input type="date">{flight.departureDate}</input>
+        //     <input type="date">{flight.returnDate}</input>
+        //   </form>
+        // </div>
+      //   <CustomModal flight={currentFlight} />
+      // )} */}
       {data &&
         data.map((flight) => (
-          <div id="border" className={styles.flightContainer}>
-            <img src={flight.routeCoverImage} alt="fligh-cover" />
+          <button
+            className={styles.flightContainer}
+            onClick={() => sendModal(flight)}
+          >
+            <img src={flight.routeCoverImage} alt="flight-cover" />
             <h1>
               {flight.origin}
               <span> → </span>
@@ -21,7 +51,7 @@ const Cards = ({ data }) => {
               <p className={styles.price}>$72</p>
               <p>{flight.tripType}</p>
             </div>
-          </div>
+          </button>
         ))}
     </div>
   )
