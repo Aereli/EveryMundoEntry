@@ -8,13 +8,48 @@ const Modal = ({ flightInfo }) => {
   return (
     <>
       <div className={styles.modal}>
-        <h1>this is the new modal</h1>
+        <h1>Flight Booked!</h1>
+
         <form>
-          <input type="text" value={flightInfo.destination}></input>
-          <input type="text" value={flightInfo.origin}></input>
-          <input type="date" value={flightInfo.departureDate}></input>
-          <input type="date" value={flightInfo.returnDate}></input>
+          <div className={styles.radio}>
+            <input
+              type="radio"
+              value="oneWay"
+              name="tripType"
+              checked={'oneWay' === flightInfo.tripType}
+            />
+            <label>One Way</label>
+            <input
+              type="radio"
+              value="roundTrip"
+              name="tripType"
+              checked={'roundTrip' === flightInfo.tripType}
+            />
+            <label>Round Trip</label>
+          </div>
+
+          {/* NOTE: Normally I would not use <br /> */}
+          <div className={styles.formSection}>
+            <label>From*</label>
+            <input type="text" value={flightInfo.destination}></input>
+            <br />
+            <label>To*</label>
+            <input type="text" value={flightInfo.origin}></input>
+            <br />
+            <label>Depart*</label>
+            <input type="date" value={flightInfo.departureDate}></input>
+            <br />
+            <label>Return*</label>
+            <input type="date" value={flightInfo.returnDate}></input>
+            <br />
+            <label>Passengers*</label>
+            <input type="number" value=""></input>
+            <br />
+            <label>Promo</label>
+            <input type="text" value=""></input>
+          </div>
         </form>
+
         <button onClick={() => setModalToggle(false)}>close</button>
       </div>
       )
