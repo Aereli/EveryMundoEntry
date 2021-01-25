@@ -1,32 +1,25 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
+import { ModalContext } from '../../context'
 import styles from './styles.module.scss'
-import useModal from './useModal'
 
-const CustomModal = ({ flight }) => {
-  console.log(flight)
-  const { toggle } = useModal
+const Modal = ({ flightInfo }) => {
+  const { setModalToggle } = useContext(ModalContext)
+  console.log(flightInfo)
   return (
-    // <Modal isActive={isActive}>
-    //   <ModalBackground onClick={handleClose} />
-    //   <ModalContent
-    //     style={{ backgroundColor: 'white', padding: '2rem', maxWidth: '60vw' }}
-    //   >
-    //     <Title isSize={6}>{title}</Title>
-    //     {children}
-    //   </ModalContent>
-    //   <ModalClose onClick={handleClose} />
-    // </Modal>
-    <div className={styles.modal}>
-      <h1>this is the new modal</h1>
-      <form>
-        <input type="text" value={flight.destination}></input>
-        <input type="text" value={flight.origin}></input>
-        <input type="date" value={flight.departureDate}></input>
-        <input type="date" value={flight.returnDate}></input>
-      </form>
-      <button onClick={toggle}>close</button>
-    </div>
+    <>
+      <div className={styles.modal}>
+        <h1>this is the new modal</h1>
+        <form>
+          <input type="text" value={flightInfo.destination}></input>
+          <input type="text" value={flightInfo.origin}></input>
+          <input type="date" value={flightInfo.departureDate}></input>
+          <input type="date" value={flightInfo.returnDate}></input>
+        </form>
+        <button onClick={() => setModalToggle(false)}>close</button>
+      </div>
+      )
+    </>
   )
 }
 
-export default CustomModal
+export default Modal
