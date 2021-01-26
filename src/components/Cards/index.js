@@ -12,8 +12,9 @@ const Cards = ({ data }) => {
       {modalToggle && <Modal flightInfo={flightInfo} />}
 
       {data &&
-        data.map((flight) => (
+        data.map((flight, i) => (
           <button
+            key={i}
             className={styles.flightContainer}
             onClick={() => {
               setModalToggle(true)

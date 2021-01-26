@@ -1,11 +1,14 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import Cards from './components/Cards'
-import { ModalContextProvider } from './context'
+import ResultsTable from './components/ResultsTable'
+import { ModalContext } from './context'
 const { REACT_APP_API_KEY } = process.env
 
 const App = () => {
   const [resData, setResData] = useState(null)
+  const { flightResults } = useContext(ModalContext)
 
+  console.log('home', flightResults)
   useEffect(() => {
     fetch(
       `https://everymundotechnical.herokuapp.com/popularRoutes/${REACT_APP_API_KEY}`
@@ -15,11 +18,9 @@ const App = () => {
   }, [])
 
   return (
-    <div>
-      <ModalContextProvider>
-        <h1>EveryMundo Flights</h1>
-        <Cards data={resData} />
-      </ModalContextProvider>
+    <div style={{ textAlign: `center` }}>
+      <h1>EveryMundo Flights</h1>
+      {!flightResults ? <Cards data={resData} /> : <ResultsTable />}
     </div>
   )
 }
