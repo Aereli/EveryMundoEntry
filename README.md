@@ -8,6 +8,9 @@ In the project directory, you can run:
 - `yarn start`
 - `yarn test`
 
+## NOTE :exclamation:
+ `.env` file is required with `REACT_APP_API_KEY` to access GET/POST Requests
+ 
 ## packages used
 
 - axios
