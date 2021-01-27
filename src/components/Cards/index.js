@@ -4,7 +4,7 @@ import { ModalContext } from '../../context'
 import styles from './styles.module.scss'
 
 const Cards = ({ data }) => {
-  const { modalToggle, setModalToggle } = useContext(ModalContext)
+  const { modalToggle, toggleModalOnOrOff } = useContext(ModalContext)
   const [flightInfo, setFlightInfo] = useState(null)
 
   return (
@@ -17,7 +17,7 @@ const Cards = ({ data }) => {
             key={i}
             className={styles.flightContainer}
             onClick={() => {
-              setModalToggle(true)
+              toggleModalOnOrOff(true)
               setFlightInfo(flight)
             }}
           >

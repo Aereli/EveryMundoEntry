@@ -1,36 +1,14 @@
 import React, { useContext, useState } from 'react'
 import { ModalContext } from '../../context'
 import styles from './styles.module.scss'
-import axios from 'axios'
-const { REACT_APP_API_KEY } = process.env
 
 const Modal = ({ flightInfo }) => {
-  const { setModalToggle, setFlightResults } = useContext(ModalContext)
+  const { chooseFlight, toggleModalOnOrOff } = useContext(ModalContext)
+
   const [inputField, setInputField] = useState({
     promoCode: '',
     passengerCount: 1,
   })
-
-  function chooseFlight(e) {
-    e.preventDefault()
-    // adjust flight object before POST req
-    flightInfo.passengerCount = parseInt(inputField.passengerCount)
-    flightInfo.promoCode = inputField.promoCode
-    delete flightInfo.fareClass
-    delete flightInfo.priceUSD
-    delete flightInfo.routeCoverImage
-
-    axios
-      .post(
-        `https://everymundotechnical.herokuapp.com/search/${REACT_APP_API_KEY}`,
-        flightInfo
-      )
-      .then((res) => setFlightResults(res))
-      .catch((err) => console.log(err))
-
-    //close the modal after submit
-    setModalToggle(false)
-  }
 
   function inputChangeHandler(e) {
     setInputField({ ...inputField, [e.target.name]: e.target.value })
@@ -40,7 +18,7 @@ const Modal = ({ flightInfo }) => {
     <div className={styles.modal}>
       <h1>Add Passengers to your flight!</h1>
 
-      <form onSubmit={(e) => chooseFlight(e)}>
+      <form onSubmit={(e) => chooseFlight(e, flightInfo, inputField)}>
         <div className={styles.radio}>
           <input
             type="radio"
@@ -57,8 +35,7 @@ const Modal = ({ flightInfo }) => {
           />
           <label>Round Trip</label>
         </div>
-
-        {/* TODO: Normally I would not use <br />, replace using css */}
+        {/* //TODO Normally I would not use <br />, replace using css */}
         <div className={styles.formSection}>
           <label>From*</label>
           <input
@@ -76,7 +53,8 @@ const Modal = ({ flightInfo }) => {
             onChange={inputChangeHandler}
           ></input>
           <br />
-          {/* TODO: change date format to be able to use 'date' as type property for the input */}
+          {/* // TODO change date format to be able to use 'date' as type property for the input*/}
+
           <label>Depart*</label>
           <input
             type="text"
@@ -107,10 +85,9 @@ const Modal = ({ flightInfo }) => {
             onChange={inputChangeHandler}
           ></input>
         </div>
-
         <div className={styles.buttons}>
           <button type="submit">Choose Flight</button>
-          <button onClick={() => setModalToggle(false)}>Cancel</button>
+          <button onClick={() => toggleModalOnOrOff(false)}>Cancel</button>
         </div>
       </form>
     </div>
