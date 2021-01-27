@@ -13,9 +13,9 @@ In the project directory, you can run:
 - axios
 - node-sass
 
-
 ## git tree
 
+```
 .gitignore
 README.md
 package.json
@@ -47,4 +47,4 @@ src
    |-- setupTests.js
    |-- styles
    |   |-- Globals.scss
-   
+```
