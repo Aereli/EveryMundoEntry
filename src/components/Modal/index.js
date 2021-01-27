@@ -43,7 +43,7 @@ const Modal = ({ flightInfo }) => {
             value={flightInfo.destination}
             name="origin"
             onChange={inputChangeHandler}
-          ></input>
+          />
           <br />
           <label>To*</label>
           <input
@@ -51,7 +51,7 @@ const Modal = ({ flightInfo }) => {
             value={flightInfo.origin}
             name="destination"
             onChange={inputChangeHandler}
-          ></input>
+          />
           <br />
           {/* // TODO change date format to be able to use 'date' as type property for the input*/}
 
@@ -60,14 +60,14 @@ const Modal = ({ flightInfo }) => {
             type="text"
             value={flightInfo.departureDate}
             onChange={inputChangeHandler}
-          ></input>
+          />
           <br />
           <label>Return*</label>
           <input
             type="text"
             value={flightInfo.returnDate}
             onChange={inputChangeHandler}
-          ></input>
+          />
           <br />
           <label>Passengers*</label>
           <input
@@ -75,7 +75,7 @@ const Modal = ({ flightInfo }) => {
             value={flightInfo.passengerCount}
             name="passengerCount"
             onChange={inputChangeHandler}
-          ></input>
+          />
           <br />
           <label>Promo</label>
           <input
@@ -83,7 +83,7 @@ const Modal = ({ flightInfo }) => {
             name="promoCode"
             value={flightInfo.promoCode}
             onChange={inputChangeHandler}
-          ></input>
+          />
         </div>
         <div className={styles.buttons}>
           <button type="submit">Choose Flight</button>

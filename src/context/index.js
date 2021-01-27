@@ -10,7 +10,7 @@ export const ModalContextProvider = ({ children }) => {
   // TODO find better way around it
   const [flightResults, setFlightResults] = useState('empty')
 
-  function chooseFlight(e, flightInfo, inputField) {
+  const chooseFlight = (e, flightInfo, inputField) => {
     e.preventDefault()
     // adjust flight object before POST req.. find a better way?!
     flightInfo.passengerCount = parseInt(inputField.passengerCount)
@@ -31,7 +31,7 @@ export const ModalContextProvider = ({ children }) => {
     setModalToggle(false)
   }
 
-  function toggleModalOnOrOff(value) {
+  const toggleModalOnOrOff = (value) => {
     return setModalToggle(value)
   }
 
@@ -39,9 +39,7 @@ export const ModalContextProvider = ({ children }) => {
     <ModalContext.Provider
       value={{
         modalToggle,
-        setModalToggle,
         flightResults,
-        setFlightResults,
         chooseFlight,
         toggleModalOnOrOff,
       }}

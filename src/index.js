@@ -1,17 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-// import './index.css';
 import './styles/Globals.scss'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
-import { ModalContextProvider } from './context'
 
 ReactDOM.render(
   <React.StrictMode>
-    {/* provides global state for attributes passed */}
-    <ModalContextProvider>
-      <App />
-    </ModalContextProvider>
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 )

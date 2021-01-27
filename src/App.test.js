@@ -1,6 +1,5 @@
-import { render, screen } from '@testing-library/react'
+import { render } from '@testing-library/react'
 import App from './App'
-import Cards from './components/Cards'
 
 // test('renders learn react link', () => {
 //   render(<App />)
@@ -10,12 +9,5 @@ import Cards from './components/Cards'
 
 test('renders the correct content', () => {
   const { getByText } = render(<App />)
-  // expect(getByText('EveryMundo Flights')).not.toBeNull()
-  expect(getByText('flightResults')).toBeNull()
+  expect(getByText('EveryMundo Flights')).not.toBeNull()
 })
-
-// test('renders the correct content', () => {
-//   const { getByText } = render(<Cards />)
-//   // expect(getByText('EveryMundo Flights')).not.toBeNull()
-//   expect(getByText('modalToggle')).not.toBeTruthy()
-// })
