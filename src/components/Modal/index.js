@@ -7,7 +7,7 @@ const Modal = ({ flightInfo }) => {
 
   const [inputField, setInputField] = useState({
     promoCode: '',
-    passengerCount: 1,
+    passengerCount: 1, // default passenger if none are selected.
   })
 
   function inputChangeHandler(e) {
@@ -72,7 +72,7 @@ const Modal = ({ flightInfo }) => {
           <label>Passengers*</label>
           <input
             type="number"
-            value={flightInfo.passengerCount}
+            value={inputField.passengerCount}
             name="passengerCount"
             onChange={inputChangeHandler}
           />
